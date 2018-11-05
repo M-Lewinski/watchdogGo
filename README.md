@@ -1,5 +1,5 @@
 # WatchdogGo
-WatchdogGo is a simple program written in Go that launches as daemon to monitor services. During execution if one of services shuts down than watchdog attempts to restart it. In addition, watchdog notifies via email if something goes wrong. Program was written with _systemd_ in mind that's why it will only work on those systems that uses systemd as daemon manager.
+WatchdogGo is a simple program written in Go language that launches as daemon to monitor services. During execution if one of services is not running then watchdog attempts to restart it. In addition, watchdog notifies via email if something goes wrong with specific service. Program was written with _systemd_ in mind that's why it will only work on those systems that uses systemd as daemon manager.
 
 ## Installation
 Required packets:
@@ -9,10 +9,10 @@ Script **install.sh** will get all required packets, build program and will auto
 If it's only necessary to build program, use script **build.sh**.
 
 ## Features
-- Monitors service and attempts to restart it if necessary, Uses systemctl command to do so. (REQUIRED ROOT)
-- Checks if settings were changed during execution of watchdog. If they were than program reacts to it accordingly.
-- Notifies via mail if something is wrong with monitored service.
-- Uses AWS services to store settings in DynamoDB database and publishes notification via SNS.
+- Monitors service and attempts to restart it if necessary. Program uses systemctl command to do so. (REQUIRED ROOT)
+- Checks if settings were changed during execution of watchdog. If they were then program react to it accordingly.
+- Notifies via email if something is wrong with monitored service.
+- Uses AWS services to store settings in DynamoDB database and publish notifications via SNS.
 
 ## Configuration
 It's necessary to modify configuration file with appropriate data.
@@ -22,7 +22,7 @@ Configuration file consists of:
 - SnsTopic : name of SNS topic that will be used to publish notifications
 - Region : region of AWS services
 - NumOfMinCheckSettings : number of minutes that watchdog will wait in order to check if settings were modified
-- WatchdogId : id of a watchdog daemon. It's useful for identifying which watchdog instance sent notification
+- WatchdogId : id of a watchdog daemon. It's used for identifying which watchdog instance sent notification
 ```
 
 Remember to also configure credentials for AWS services (check AWS documentation for more info).
@@ -40,7 +40,7 @@ Usage of watchdogGo:
   -m string
     	Name of a mail directory containing mail templates (default "mail")
 ```
-Sending signals **SIGTERM** or **SIGQUIT** properly turns off watchdog instance.
+Sending signal **SIGTERM** or **SIGQUIT** will shut down watchdog instance cleanly.
 It's possible to run multiple daemon instances simultaneously on the same system. 
 #### Example
 ```
