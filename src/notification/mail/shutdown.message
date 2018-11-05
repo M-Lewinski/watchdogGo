@@ -1,0 +1,2 @@
+{{.Notify.Name}} {{.Notify.Id}} detected that service {{.Service}} is not running.
+{{.Notify.Name}} will attempt to restart the service.

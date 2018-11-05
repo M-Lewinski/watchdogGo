@@ -1,0 +1,9 @@
+{{.Notify.Name}} with id {{.Notify.Id}} tried to restart service {{.Service}}  which ended with **{{.Status}}**.
+Restart attempts: {{.Attempts}}
+{{if .ErrorInfo}}
+
+Last attempt error Info:
+{{.ErrorInfo}}
+
+Please check log files for more information.
+{{end}}

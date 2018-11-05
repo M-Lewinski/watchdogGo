@@ -1,0 +1,7 @@
+{
+    "DatabaseTable" : "Database name",
+    "SnsTopic" : "SNS topic name",
+    "Region" : "us-west-2",
+    "NumOfMinCheckSettings" : 15.0,
+    "WatchdogId" : "1"
+}

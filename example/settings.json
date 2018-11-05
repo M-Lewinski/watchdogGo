@@ -1,0 +1,7 @@
+{
+    "id": {"S": "1"},
+    "listOfServices": {"SS": ["mysqld", "docker"]},
+    "numOfSecCheck" : {"N": "60"},
+    "numOfSecWait": {"N": "10"},
+    "numOfAttempts": {"N": "4"}
+}

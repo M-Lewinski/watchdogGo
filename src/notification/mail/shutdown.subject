@@ -1,0 +1,1 @@
+{{.Notify.Name}} [{{.Notify.Id}}] Service {{.Service}} shut down
