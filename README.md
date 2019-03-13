@@ -15,6 +15,8 @@ If it's only necessary to build program, use script **build.sh**.
 - Uses AWS services to store settings in DynamoDB database and publish notifications via SNS.
 
 ## Configuration
+
+#### Local configuration file
 It's necessary to modify configuration file with appropriate data.
 Configuration file consists of:
 ```
@@ -26,6 +28,27 @@ Configuration file consists of:
 ```
 
 Remember to also configure credentials for AWS services (check AWS documentation for more info).
+
+#### Database configuration
+Currently watchdog communicate with DynamoDB to acquire necessary information about list of services and settings.
+DynamoDB scheme consists of:
+```
+- Id : identification used to find specific settings
+- ListOfServices : list of services that watchdog should monitor
+- NumOfSecCheck : number of seconds between consecutive checks of services
+- NumOfSecWait : number of seconds that watchdog wait for between checking attempts
+- NumOfAttempts : number of check attempts. If attempts exceed provided value, than watchdog will consider service as faulty.
+```
+##### Example
+```
+{
+  “Id”: “1”,
+  “ListOfServices”: [“mysqld”, “docker”],
+  “NumOfSecCheck” : 60,
+  “NumOfSecWait”: 10,
+  “NumOfAttempts”: 4
+}
+```
 
 ## Usage
 Program monitors services across system, that's why **IT'S IMPORTANT TO RUN PROGRAM AS ROOT OR OTHER PRIVILEGED USER**.
