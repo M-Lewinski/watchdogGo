@@ -50,6 +50,8 @@ DynamoDB scheme consists of:
 }
 ```
 
+File **settings.json** in directory **example** contains example of DynamoDB scheme configuration.
+
 ## Usage
 Program monitors services across system, that's why **IT'S IMPORTANT TO RUN PROGRAM AS ROOT OR OTHER PRIVILEGED USER**.
 ```
